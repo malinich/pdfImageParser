@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block body %}
+<main class="main-content">
+    <header class="header">
+        <div class="container">
+            <div class="navbar navbar-expand-lg">
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item dropdown user-item">
+                        <a data-toggle="dropdown" href="javascript:void(0)" class=" dropdown-toggle">
+                            <img src="" width="50" alt="" class="img-fluid rounded-circle">
+                            <span class="hidden-md-down"> {{ current_user.name }}</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right profile-dropdown">
+                            <li class="dropdown-item">
+                                <a href="/auth/logout"><i class="icon-power-switch"></i> Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="container">
+            <div class="page-title pt30 pb30">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ol class="breadcrumb float-right">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item ">Pdf Table</li>
+                        </ol>
+                        <h4 class="mb10">PDF Table</h4>
+                    </div>
+                </div>
+            </div><!--page title-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="message"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb30">
+                    <div class="card">
+                        <div class="card-top">
+                            <h4 class="card-title">Saved</h4>
+
+                        </div><!--card top-->
+                        <div class="card-content pb20">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Pdf Name</th>
+                                    <th>Pdf images</th>
+                                    <th>Username</th>
+                                    <th>Created</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% if items %}
+                                {% for idx, item in enumerate(items) %}
+                                <tr>
+                                    <th scope="row">{{ idx }}</th>
+                                    <td><a href="{{ item[1][0]['pdf']['path'] }}" target="_blank">
+                                        {{ item[1][0]['pdf']['name'] }}
+                                    </a></td>
+                                    <td>
+                                        {% for i in item[1] %}
+                                        <div><a href="{{ i['image'] }}" target="_blank">{{ i['image'] }}</a></div>
+                                        {% end %}
+                                    </td>
+                                    <td>{{ item[1][0]['pdf']['user']['name'] }}</td>
+                                    <td>{{ item[1][0]['pdf']['created']}}</td>
+                                </tr>
+                                {% end %}
+                                {% end %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb30">
+                    <form method="POST" action="/upload" enctype="multipart/form-data">
+                        <input type="file" multiple name="data"/>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% end %}

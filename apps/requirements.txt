@@ -1,0 +1,17 @@
+aioamqp==0.10.0
+amqp==2.2.2
+bcrypt==3.1.4
+billiard==3.5.0.3
+celery==4.1.0
+cffi==1.11.4
+kombu==4.1.0
+marshmallow==2.15.0
+pycparser==2.18
+pytz==2018.3
+redis==2.10.6
+Represent==1.5.1
+SQLAlchemy==1.2.2
+tornado==4.5.3
+vine==1.1.4
+requests
+Wand==0.4.4

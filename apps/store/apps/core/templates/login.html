@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="layout-accounts">
+    <div class="account-wrap">
+        <div class="account-card">
+            <div class="account-content smart-forms">
+                <form method="post" action="#" id="contact">
+                    <div class="form-body">
+
+                        <div class="spacer-t30 spacer-b30">
+                            <div class="tagline"><span> Login </span></div><!-- .tagline -->
+                        </div>
+
+                        <div class="section">
+                            <label class="field prepend-icon">
+                                <input type="email" name="email" id="email" class="gui-input"
+                                       placeholder="Enter email">
+                                <span class="field-icon"><i class="fa fa-user"></i></span>
+                            </label>
+                        </div><!-- end section -->
+
+                        <div class="section">
+                            <label class="field prepend-icon">
+                                <input type="text" name="password" id="password" class="gui-input"
+                                       placeholder="Enter password">
+                                <span class="field-icon"><i class="fa fa-lock"></i></span>
+                            </label>
+                        </div><!-- end section -->
+
+
+                    </div><!-- end .form-body section -->
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                    </div><!-- end .form-footer section -->
+                    <div class="spacer-t30 spacer-b30 pt20">
+                        <div class="tagline"><span> OR  Don't have an account </span></div><!-- .tagline -->
+                    </div>
+                    <div class='text-center'>
+                        <a href='/auth/create'>Sign Up here</a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% end %}

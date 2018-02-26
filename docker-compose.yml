@@ -1,0 +1,26 @@
+version: "3"
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    environment:
+      - RABBITMQ_NODENAME=my-rabbit
+    container_name: "conv_rabbitmq"
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+  redis:
+    image: redis
+    container_name: "conv_redis"
+    ports:
+      - 6379:6379
+
+  nginx:
+    build: "./nginx"
+    container_name: "conv_nginx"
+    volumes:
+      - /tmp:/tmp
+      - /tmp/media:/var/media
+    network_mode: host
+    ports:
+      - 8000:8000
